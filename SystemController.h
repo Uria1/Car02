@@ -5,12 +5,13 @@ class SystemController {
     DrivingController* drivingController = new DrivingController();
 
     Activity* act1 = new ProximityFollowing(stateMonitor, drivingController);
-
+    Activity* test1 = new DrivingTestActivity(drivingController);
+    
   public:
     SystemController(Config* config) {
       this->config = config;
     }
-    
+
     void init() {
       drivingController->init();
     }
