@@ -11,16 +11,15 @@ class ProximityFollowing: public Activity {
 
     void update(ms millis) {
       if (sm->frontProx < 50) {
-        if (!currentAction->active) {
-          currentAction->active = true;
+        if (!currentAction->active()) {
           currentAction->goBackward(500);
         }
       }
     }
 
     void render(ms millis) {
-      if (currentAction->active) {
-        dc->render(currentAction);
+      if (currentAction->active()) {
+        dc->render(currentAction, millis);
       }
     }
 };

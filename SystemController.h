@@ -1,15 +1,13 @@
 
 class SystemController {
-    Config* config;
     StateMonitor* stateMonitor = new StateMonitor();
-    DrivingController* drivingController = new DrivingController();
-
+    DrivingController* drivingController;
     Activity* act1 = new ProximityFollowing(stateMonitor, drivingController);
     Activity* test1 = new DrivingTestActivity(drivingController);
     
   public:
-    SystemController(Config* config) {
-      this->config = config;
+    SystemController(SysConfig* config) {
+      this->drivingController = new DrivingController(config);
     }
 
     void init() {
@@ -22,9 +20,11 @@ class SystemController {
 
     void update(ms millis) {
       //act1->update(millis);
+      test1->update(millis);
     }
 
     void render(ms millis) {
       //act1->render(millis);
+      test1->render(millis);
     }
 };

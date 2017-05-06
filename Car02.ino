@@ -1,6 +1,6 @@
 #include "typedefs.h"
 #include "PinConfig.h"
-#include "Config.h"
+#include "SysConfig.h"
 #include "SteeringDirection.h"
 #include "DrivingDirection.h"
 #include "StateMonitor.h"
@@ -24,7 +24,7 @@ const int pinRight = 2; //red
 
 const int frameInterval = 100;
 
-Config* getConfig() {
+SysConfig* getConfig() {
   PinConfig* pins = new PinConfig();
   pins->builtInLed = 13;
   pins->Forward = 4; //brown
@@ -32,16 +32,14 @@ Config* getConfig() {
   pins->Left = 3; //white/green
   pins->Right = 2; //red
   
-  Config* c = new Config();
-  c->pinConfig = pins;
+  SysConfig* c = new SysConfig(pins);
   return c;
 }
 
 SystemController* systemController;
 
 void setup() {
-  Config* c = getConfig();
-  systemController = new SystemController(c);
+  systemController = new SystemController(getConfig());
   systemController->init();
 }
 

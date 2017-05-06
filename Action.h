@@ -2,11 +2,18 @@
 
 class Action {
   public:
-    boolean active = false;
     ms startTime;
     ms duration;
 
-    ms getRemainingDuration() {
+    boolean active() {
+      return elapsedTime() <= duration;
+    }
+    
+    ms elapsedTime() {
+      return millis() - startTime;
+    }
+
+    ms remainingDuration() {
       ms r = duration - (millis() - startTime);
       if (r > 0) {
         return r;

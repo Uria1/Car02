@@ -1,15 +1,23 @@
 class DrivingController {
-    PropultionController* propultionController = new PropultionController();
-    SteeringController* steeringController = new SteeringController();
+    SysConfig* config;
+    PropultionController* propultionController;
+    SteeringController* steeringController;
 
   public:
-    void init() {
+    DrivingController(SysConfig* config) {
+      this->config = config;
+      propultionController = new PropultionController(config);
+      steeringController = new SteeringController(config);
+    }
 
+    void init() {
+      propultionController->init();
+      steeringController->init();
 
     }
 
-    void render(DriveAction* action) {
-      ms rd = action->getRemainingDuration();
+    void render(DriveAction* action, ms millis) {
+      ms rd = action->remainingDuration();
       if (rd > 0) {
         this->go(Backward, Straight, 50, 500);
       } else {

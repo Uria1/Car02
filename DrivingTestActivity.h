@@ -1,6 +1,7 @@
 class DrivingTestActivity: public Activity {
     DrivingController* dc;
     DriveAction* currentAction;
+    boolean started = false;
   public:
     DrivingTestActivity(DrivingController* d) {
       dc = d;
@@ -8,15 +9,15 @@ class DrivingTestActivity: public Activity {
     }
 
     void update(ms millis) {
-      if (!currentAction->active) {
-        currentAction->active = true;
+      if (!started) {
+        started = true;
         currentAction->goBackward(1000);
       }
     }
 
     void render(ms millis) {
-      if (currentAction->active) {
-        dc->render(currentAction);
+      if (currentAction->active()) {
+        dc->render(currentAction, millis);
       }
     }
 };

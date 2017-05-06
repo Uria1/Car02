@@ -5,7 +5,6 @@ class DriveAction : public Action {
     SteeringDirection steeringDirection;
 
     void goBackward(ms duration) {
-      this->active = true;
       this->startTime = millis();
       this->drivingDirection = Backward;
       this->steeringDirection = Straight;
