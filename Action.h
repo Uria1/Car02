@@ -1,3 +1,5 @@
+#include "typedefs.h"
+
 class Action {
   public:
     boolean active = false;

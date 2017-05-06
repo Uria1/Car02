@@ -3,6 +3,11 @@ class DrivingController {
     SteeringController* steeringController = new SteeringController();
 
   public:
+    void init() {
+
+
+    }
+
     void render(DriveAction* action) {
       ms rd = action->getRemainingDuration();
       if (rd > 0) {
@@ -13,7 +18,7 @@ class DrivingController {
     }
 
     void go(DrivingDirection dd, SteeringDirection sd, speed speed, ms duration) {
-      
+
     }
 };
 

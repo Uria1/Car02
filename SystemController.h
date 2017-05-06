@@ -6,6 +6,10 @@ class SystemController {
     Activity* act1 = new ProximityFollowing(stateMonitor, drivingController);
 
   public:
+    void init() {
+      drivingController->init();
+    }
+
     void readState(ms millis) {
       stateMonitor->read(millis);
     }
