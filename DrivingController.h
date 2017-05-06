@@ -17,16 +17,14 @@ class DrivingController {
     }
 
     void render(DriveAction* action, ms millis) {
-      ms rd = action->remainingDuration();
-      if (rd > 0) {
-        this->go(Backward, Straight, 50, 500);
+      if (action->active()) {
+        steeringController->steer(action->steeringDirection);
+        propultionController->go(action->drivingDirection);
       } else {
+        steeringController->steer(Straight);
+        propultionController->stop();
       }
-
     }
 
-    void go(DrivingDirection dd, SteeringDirection sd, speed speed, ms duration) {
-
-    }
 };
 
