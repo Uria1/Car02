@@ -11,13 +11,11 @@ class DrivingTestActivity: public Activity {
     void update(ms millis) {
       if (!started) {
         started = true;
-        currentAction->goBackward(1000);
+        currentAction->reverse(5000);
       }
     }
 
     void render(ms millis) {
-      if (currentAction->active()) {
-        dc->render(currentAction, millis);
-      }
+      dc->render(currentAction, millis);
     }
 };

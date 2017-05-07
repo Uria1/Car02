@@ -1,13 +1,17 @@
 
 class SystemController {
-    StateMonitor* stateMonitor = new StateMonitor();
+    StateMonitor* stateMonitor;
     DrivingController* drivingController;
-    Activity* act1 = new ProximityFollowing(stateMonitor, drivingController);
-    Activity* test1 = new DrivingTestActivity(drivingController);
-    
+    Activity* act1;
+    Activity* test1;
+
   public:
     SystemController(SysConfig* config) {
+      this->stateMonitor = new StateMonitor();
       this->drivingController = new DrivingController(config);
+
+      this->act1 = new ProximityFollowing(stateMonitor, drivingController);
+      this->test1 = new DrivingTestActivity(drivingController);
     }
 
     void init() {

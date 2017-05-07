@@ -13,13 +13,12 @@ class DrivingController {
     void init() {
       propultionController->init();
       steeringController->init();
-
     }
 
     void render(DriveAction* action, ms millis) {
       if (action->active()) {
         steeringController->steer(action->steeringDirection);
-        propultionController->go(action->drivingDirection);
+        propultionController->go(action->drivingDirection, action->elapsedTime());
       } else {
         steeringController->steer(Straight);
         propultionController->stop();
