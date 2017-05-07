@@ -37,15 +37,9 @@ void blinkWait(int times, int interval) {
 
 void setup() {
   pinMode(13, OUTPUT);
-  analogWrite(2, 0);
-  analogWrite(3, 0);
-  analogWrite(4, 0);
-  analogWrite(5, 0);
 
   Serial.begin(9600);
   Serial.println("--- SETUP ---");
-
-  blinkWait(5, 100);
 
   PinConfig* pins = new PinConfig();
   pins->builtInLed = 13;

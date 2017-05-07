@@ -24,7 +24,7 @@ class SteeringController {
       this->clear();
     }
 
-    void steer(SteeringDirection sd) {
+    void steer(SteeringDirection sd, ms elapsedTime) {
       switch (sd) {
         case Straight:
           this->clear();

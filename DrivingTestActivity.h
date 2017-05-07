@@ -9,7 +9,8 @@ class DrivingTestActivity: public Activity {
     }
 
     void update(ms millis) {
-      if (!started) {
+      //start after 2 seconds
+      if (!started && millis > 2000) {
         started = true;
         currentAction->reverse(5000);
       }
