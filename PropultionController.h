@@ -10,6 +10,10 @@ class PropultionController {
       analogWrite(config->pins->Backward, value);
     }
 
+    int ease(ms totalDuration, ms elapsedTime, int value) {
+      return TimeFunctions::ease(80, value, totalDuration, elapsedTime, 1000, 1000);
+    }
+
   public:
     PropultionController(SysConfig* config) {
       this->config = config;
@@ -24,26 +28,20 @@ class PropultionController {
       setBackward(0);
     }
 
-    void go(DrivingDirection dd, ms elapsedTime) {
-      switch (dd) {
-        case Forward:
-          setBackward(0);
-          setForward(this->ease(elapsedTime, 255));
-          break;
-        case Backward:
-          setForward(0);
-          setBackward(this->ease(elapsedTime, 255));
+    void render(DriveAction* action) {
+      if (action->active()) {
+        switch (action->drivingDirection) {
+          case Forward:
+            setBackward(0);
+            setForward(this->ease(action->duration, action->elapsedTime(), 255));
+            break;
+          case Backward:
+            setForward(0);
+            setBackward(this->ease(action->duration, action->elapsedTime(), 255));
+        }
+      } else {
+        stop();
       }
     }
-
-    int ease(ms elapsedTime, int value) {
-      if (elapsedTime < easeIn) {
-        float f = (float)elapsedTime / (float)easeIn;
-        return value * f;
-      }
-      return value;
-    }
-
-
 };
 

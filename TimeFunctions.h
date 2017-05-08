@@ -8,7 +8,7 @@ class TimeFunctions {
       } else if (isEaseOut(elapsedTime, totalDuration, easeOutDuration)) {
         ms easeOutMS = elapsedTime - (totalDuration - easeOutDuration);
         float easeOutPercentage = (float)easeOutMS / (float)easeOutDuration;
-        result = endValue - easeOutPercentage * (endValue - startValue)
+        result = endValue - easeOutPercentage * (endValue - startValue);
       } else {
         result = endValue;
       }
@@ -25,5 +25,5 @@ class TimeFunctions {
     static boolean isEaseOut(ms elapsedTime, ms totalDuration, ms easeOutDuration) {
       return elapsedTime > totalDuration - easeOutDuration;
     }
-}
+};
 
