@@ -7,11 +7,11 @@ class SteeringController {
     const int easeHighValue = 240;
 
     void setRight(int value) {
-      analogWrite(config->pins->Right, value);
+      analogWrite(config->pins->drivingPins->Right, value);
     }
 
     void setLeft(int value) {
-      analogWrite(config->pins->Left, value);
+      analogWrite(config->pins->drivingPins->Left, value);
     }
 
     int ease(ms totalDuration, ms elapsedTime) {

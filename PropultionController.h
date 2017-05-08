@@ -4,10 +4,10 @@ class PropultionController {
     ms easeIn = 3000;
 
     void setForward(int value) {
-      analogWrite(config->pins->Forward, value);
+      analogWrite(config->pins->drivingPins->Forward, value);
     }
     void setBackward(int value) {
-      analogWrite(config->pins->Backward, value);
+      analogWrite(config->pins->drivingPins->Backward, value);
     }
 
     int ease(ms totalDuration, ms elapsedTime, int value) {

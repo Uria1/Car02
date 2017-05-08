@@ -1,4 +1,5 @@
 #include "typedefs.h"
+#include "DrivingPins.h"
 #include "PinConfig.h"
 #include "SysConfig.h"
 #include "SteeringDirection.h"
@@ -42,15 +43,16 @@ void setup() {
   Serial.begin(9600);
   Serial.println("--- SETUP ---");
 
-  PinConfig* pins = new PinConfig();
-  pins->builtInLed = 13;
-  pins->Forward = 4; //brown
-  pins->Backward = 5; //blue
-  pins->Left = 3; //white/green
-  pins->Right = 2; //red
+  DrivingPins* dp = new DrivingPins();
+  dp->builtInLed = 13;
+  dp->Forward = 4; //brown
+  dp->Backward = 5; //blue
+  dp->Left = 3; //white/green
+  dp->Right = 2; //red
 
-  SysConfig* c = new SysConfig(pins);
-  systemController = new SystemController(c);
+  PinConfig* pc = new PinConfig(dp);
+  SysConfig* sc = new SysConfig(pc);
+  systemController = new SystemController(sc);
   systemController->init();
 }
 
