@@ -24,7 +24,7 @@
   const int pinRight = 2; //red
 */
 
-const int frameInterval = 100;
+const int frameInterval = 40;
 
 SystemController* systemController;
 

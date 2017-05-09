@@ -12,7 +12,7 @@ class ProximityFollowing: public Activity {
     void update(ms millis) {
       if (sm->frontProx < 50) {
         if (!currentAction->active()) {
-          currentAction->reverse(500);
+          currentAction->reverse(500, 100);
         }
       }
     }
